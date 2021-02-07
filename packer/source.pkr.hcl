@@ -3,9 +3,10 @@ source "amazon-ebs" "aws-ebs" {
   region = var.region
   ami_name = "DemoCustomAMI"
   instance_type = var.instance_type
+  source_ami = var.base_ami  # Ubuntu Server 18.04 LTS (HVM), SSD Volume Type
   communicator = "ssh"
   ssh_username = "ubuntu"
-  source_ami = var.base_ami  # Ubuntu Server 18.04 LTS (HVM), SSD Volume Type
+  shutdown_behavior = "terminate"
 
   //  source_ami_filter {
   //    filters = {
