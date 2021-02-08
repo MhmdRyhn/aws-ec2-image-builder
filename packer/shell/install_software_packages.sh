@@ -10,10 +10,10 @@ sudo apt-get install -y libapache2-mod-wsgi
 sudo apt-get install -y git
 # Install pip for python3
 sudo apt-get install -y python3-pip
-# Install virtualenv package
-pip3 install virtualenv
-
-# This directory should allow least required permissions
+# Install virtualenv package. Make sure you are using sudo,
+# because otherwise root user cannot access the package.
+sudo pip3 install virtualenv
+# This directory should allow least required permissions.
 sudo chmod 777 /var/www/
 
 # Following commands can be used to see if the AMI's been created as intended by launching an instance

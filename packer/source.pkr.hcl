@@ -1,7 +1,7 @@
 source "amazon-ebs" "aws-ebs" {
   profile = var.profile
   region = var.region
-  ami_name = "DemoCustomAMI"
+  ami_name = "${local.resource_name_prefix}-custom-image"
   instance_type = var.instance_type
   source_ami = var.base_ami  # Ubuntu Server 18.04 LTS (HVM), SSD Volume Type
   communicator = "ssh"
@@ -26,9 +26,11 @@ source "amazon-ebs" "aws-ebs" {
   //  }
 
   tags = {
-    Name = "CustomImageForLearning"
+    App = "${var.prefix}"
+    Env = "${var.environment}"
     OS = "Ububtu 18.04 LTS"
-    Base-AMI-ID = "{{ .SourceAMI }}"
+    Name = "${local.resource_name_prefix}-custom-image"
+    BaseAMIID = "{{ .SourceAMI }}"
   }
 }
 
@@ -42,7 +44,7 @@ build {
   }
   provisioner "shell-local" {
     inline = [
-      "echo 'Message from a successful packer build.'"
+      "echo 'AMI has been built successfully.'"
     ]
   }
 }

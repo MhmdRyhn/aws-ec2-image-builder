@@ -8,10 +8,12 @@ Here, **Packer 1.6.6** has been used. Packer version earlier than `1.5` doesn't 
 in those cases instead.
 
 ## Input
-Create a file named `input.pkrvars.hcl` and put the following content in the file. Here is a sample input.
+Create a file named `variables.pkrvars.hcl` and put the following content in the file. Here is a sample input.
 ```text
 profile = "dev"
 region = "eu-west-1"
+prefix = "app-name"
+environment = "dev"
 base_ami = "ami-0dc8d444ee2a42d8a"
 instance_type = "t2.micro"
 ```
